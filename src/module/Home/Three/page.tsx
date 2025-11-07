@@ -1,7 +1,35 @@
 import styles from "./page.module.css";
 import { FaGithub, FaGooglePlay, FaGlobe } from 'react-icons/fa';
 
+interface ProjectLink {
+  icon: React.ReactElement;
+  href: string;
+  label: string;
+}
+
+interface Project {
+  do: boolean;
+  name: string;
+  description: string;
+  logo: string;
+  Any: string;
+  rotate: number;
+  left: string;
+  bottom: string;
+  width: string; 
+  height: string;
+  flip: boolean;
+  links: ProjectLink[];
+  progress?: number;
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
 export default function Three() {
+
+  
   const project1 = {
     do: false,
     name: "Povidom",
@@ -55,7 +83,7 @@ export default function Three() {
     ],
   };
 
-  const ProjectCard = ({ project }) => (
+  const ProjectCard: React.FC<ProjectCardProps> = ({ project })  => (
     <div className={styles.card}>
       <div className={styles.header}>
         <img src={project.logo} alt={`${project.name} Logo`} className={styles.logo} />
