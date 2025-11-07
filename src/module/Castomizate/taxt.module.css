@@ -1,0 +1,34 @@
+.page {
+  cursor: pointer;
+  padding: 5px 5px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.green {
+  background-color: #08872B;
+  font-size: 20px;
+  color: white;
+}
+
+.red {
+  background-color: #C53211;
+  color: white;
+}
+
+.purple {
+  background-color: #8342FA;
+  color: white;
+}
+
+
+.orange {
+  background-color: #D67200;
+  font-size: 20px;
+  color: white;
+}
+
+.blue {
+  background-color: #006EDB;
+  color: white;
+}

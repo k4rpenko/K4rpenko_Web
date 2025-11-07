@@ -1,0 +1,43 @@
+.page{
+  min-height: 100vh;
+  margin-top: 100px;
+  padding-left: 150px;
+  padding-right: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.AboutMe{
+  gap: 20px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+
+  h1{
+      font-size: 50px;
+  }
+
+  p{
+      font-size: 20px;
+      color: #cccccc;
+      line-height: 2;
+  }
+}
+
+.painting {
+  position: relative; 
+  width: 100%; 
+  max-width: 800px;
+  height: 400px; 
+  overflow: hidden; 
+  border-radius: 20px; 
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.painting img { 
+    transition: filter 0.3s ease; 
+}
+
+.painting:hover img {
+  filter: blur(0px) contrast(1); 
+}

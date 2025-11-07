@@ -1,0 +1,49 @@
+.main {
+  margin-top: 70px;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.iconsContainer {
+  position: relative;
+  width: 900px; 
+  height: 900px;  
+}
+
+.floating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  padding: 10px;
+  
+  background: rgba(212, 212, 212, 0.15); 
+  backdrop-filter: blur(10px) saturate(180%);
+
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  color: white;
+  background: blur(3.5px);
+}
+
+.clickBack {
+  position: absolute;
+  cursor: pointer;
+  z-index: 20; 
+}
+
+.clickTop{
+  cursor: pointer;
+}
+
+.threed{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10; 
+  pointer-events: none; 
+}
