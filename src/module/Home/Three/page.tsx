@@ -78,8 +78,8 @@ export default function Three() {
     height: "300px",
     flip: false,
     links: [
-      { icon: <FaGooglePlay />, href: "https://play.google.com/store/apps/details?id=com.kapital.app", label: "Play Market" },
-      { icon: <FaGlobe />, href: "", label: "Web Site" },
+      { icon: <FaGooglePlay />, href: "https://play.google.com/apps/testing/com.kapital.app", label: "Play Market" },
+      { icon: <FaGlobe />, href: "/kapital", label: "Web Site" },
     ],
   };
 
