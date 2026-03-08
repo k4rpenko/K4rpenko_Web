@@ -9,11 +9,13 @@ export default function Home() {
       <div id="main" className={styles.one}>
         <div className={styles.title}>
           <h1>Welcome to my development website</h1>
-          <h3 style={{ color: "#666666" }}>
+          <h3>
             created purely for the purpose of getting to know me and my work
           </h3>
         </div>
-        <MainPage />
+        <div className={styles.MainPage}>
+          <MainPage/>
+        </div>
       </div>
 
       <section id="whoim">

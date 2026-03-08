@@ -71,6 +71,13 @@ export default function MainPage() {
       const delta = Math.max(0, now - lastFrameTimeRef.current);
       lastFrameTimeRef.current = now;
 
+      const rect = containerRef.current?.getBoundingClientRect();
+      const currentSize = rect ? rect.width : 900;
+      
+      const dynamicRadius = currentSize * 0.4; 
+      const centerX = currentSize / 2;
+      const centerY = currentSize / 2;
+
       icons.forEach((icon, i) => {
         const isHovered = hoveredIndexRef.current === i;
 
@@ -81,8 +88,9 @@ export default function MainPage() {
 
         const t = localTimesRef.current[i];
         const chaos = Math.sin(t + i) * 0.3 + 1;
-        const orbitX = Math.cos(anglesRef.current[i]) * radius * chaos;
-        const orbitY = Math.sin(anglesRef.current[i]) * radius * chaos * 0.7;
+        
+        const orbitX = Math.cos(anglesRef.current[i]) * dynamicRadius * chaos;
+        const orbitY = Math.sin(anglesRef.current[i]) * dynamicRadius * chaos * 0.7;
         const z = Math.sin(t * 0.5 + zWavesRef.current[i]) * 100;
 
         const x = centerX + orbitX;
@@ -90,8 +98,8 @@ export default function MainPage() {
 
         lastPositionsRef.current[i] = { x, y, z };
 
-        (icon as HTMLElement).style.transform = `
-          translate3d(${lastPositionsRef.current[i].x}px, ${lastPositionsRef.current[i].y}px, ${lastPositionsRef.current[i].z}px)
+        icon.style.transform = `
+          translate3d(${x}px, ${y}px, ${z}px)
           rotate(${anglesRef.current[i] * 20}deg)
         `;
       });

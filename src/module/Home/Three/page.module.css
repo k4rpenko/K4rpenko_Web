@@ -1,7 +1,6 @@
 .page {
-  padding-left: 150px;
-  padding-right: 150px;
   min-height: 50vh;
+  margin-top: 10vh;
 }
 
 .pageTitle {
@@ -13,10 +12,11 @@
 }
 
 .grid {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .card {
@@ -67,16 +67,30 @@
 }
 
 
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
-  font-size: 1.5em;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
   color: white;
   margin: 0;
   line-height: 1.2;
 }
 
-.bottom{
+.bottom {
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ProgresAndLinks {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 
@@ -84,12 +98,6 @@
   font-size: 0.9em;
   color: #7f8c8d;
   margin: 5px 0 0 0;
-}
-
-.ProgresAndLinks{
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .progressContainer {
@@ -167,16 +175,42 @@
 }
 
 .linkText {
-    font-size: 0.8em;
-    text-align: center;
+  font-size: clamp(0.7rem, 1vw, 0.8rem);
+  text-align: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+  
+}
+
+@media (max-width: 900px) {
   .grid {
     flex-direction: column;
     align-items: center;
   }
+
   .card {
     max-width: 90%;
+  }
+
+  .AnyPhoto {
+    max-height: 150px;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .linkButton {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
   }
 }

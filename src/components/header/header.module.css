@@ -45,7 +45,6 @@
 .left {
   display: flex;
   align-items: center;
-  min-width: 160px;
   gap: 12px;
 }
 
@@ -159,5 +158,15 @@
   }
   .right {
     min-width: 110px;
+  }
+}
+
+@media (max-width: 600px) {
+  .centerNav, .centerNav.scrolled{
+    display: none;
+  }
+
+  .inner{
+    justify-content: space-between;
   }
 }

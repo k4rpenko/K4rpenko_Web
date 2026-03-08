@@ -1,10 +1,11 @@
-.page{
-  min-height: 100vh;
-  margin-top: 100px;
-  padding-left: 150px;
-  padding-right: 150px;
+.page {
+  margin-top: 10vh;
+  padding-left: clamp(20px, 10vw, 150px);
+  padding-right: clamp(20px, 10vw, 150px);
+
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .AboutMe{
@@ -14,13 +15,13 @@
   flex-direction: column;
 
   h1{
-      font-size: 50px;
+    font-size: clamp(2rem, 5vw, 3rem);
   }
 
   p{
-      font-size: 20px;
-      color: #cccccc;
-      line-height: 2;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #cccccc;
+    line-height: 2;
   }
 }
 
@@ -35,9 +36,26 @@
 }
 
 .painting img { 
-    transition: filter 0.3s ease; 
+  transition: filter 0.3s ease; 
 }
 
 .painting:hover img {
   filter: blur(0px) contrast(1); 
+}
+
+@media (max-width: 700px) {
+  .painting {
+    display: none;
+  }
+
+  .AboutMe{
+    max-width: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .page{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }

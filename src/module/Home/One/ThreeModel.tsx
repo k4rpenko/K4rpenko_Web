@@ -12,14 +12,16 @@ export default function ThreeModel() {
 
   useEffect(() => {
     const scene = new THREE.Scene();
-    const width = 900;
-    const height = 900;
+    const width = mountRef.current?.clientWidth || 100;
+    const height = mountRef.current?.clientHeight || 100;
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 7, 18);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
     renderer.setClearColor(0x000000, 0);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.2;
@@ -66,8 +68,19 @@ export default function ThreeModel() {
       box.getCenter(center);
       model.position.sub(center);
 
-      model.scale.set(1.5, 1.5, 1.5);
       scene.add(model);
+
+      const handleResize = () => {
+        if (!mountRef.current) return;
+        
+        const w = mountRef.current.clientWidth;
+        const h = mountRef.current.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      };
+
+      window.addEventListener("resize", handleResize);
 
       model.traverse((child: any) => {
         if (child.isMesh) {
@@ -80,26 +93,19 @@ export default function ThreeModel() {
         }
       });
 
-      // ⚙️ Логіка взаємодії
+
       let isDragging = false;
       const defaultCameraPos = new THREE.Vector3(0, 7, 18);
 
-      renderer.domElement.addEventListener("mousedown", () => {
-        isDragging = true;
-      });
-      renderer.domElement.addEventListener("mouseup", () => {
-        isDragging = false;
-      });
+      renderer.domElement.addEventListener("mousedown", () => (isDragging = true));
+      renderer.domElement.addEventListener("mouseup", () => (isDragging = false));
 
       const animate = () => {
         requestAnimationFrame(animate);
         controls.update();
 
-        if (isDragging) {
-
-        } else {
+        if (!isDragging) {
           camera.position.lerp(defaultCameraPos, 0.03);
-
           model.rotation.y += 0.005; 
         }
 
@@ -118,10 +124,6 @@ export default function ThreeModel() {
     <div
       className={styles.threed}
       ref={mountRef}
-      style={{
-        width: "900px",
-        height: "900px",
-      }}
     />
   );
 }
